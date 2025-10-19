@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ titulo }}</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" name="nome" value="{{ valor or '' }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancelar</a>
+</form>
+{% endblock %}

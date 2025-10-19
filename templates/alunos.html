@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Alunos</h2>
+<a class="btn btn-success mb-3" href="{{ url_for('adicionar_aluno') }}">Adicionar Aluno</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cursos</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>
+                {% for curso in aluno.cursos %}
+                    <span class="badge bg-info text-dark">{{ curso.nome }}</span>
+                {% endfor %}
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="{{ url_for('editar_aluno', id=aluno.id) }}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="{{ url_for('deletar_aluno', id=aluno.id) }}">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

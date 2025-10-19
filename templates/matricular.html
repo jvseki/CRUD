@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Matricular Aluno em Curso</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Aluno</label>
+        <select class="form-select" name="aluno">
+            {% for aluno in alunos %}
+            <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Curso</label>
+        <select class="form-select" name="curso">
+            {% for curso in cursos %}
+            <option value="{{ curso.id }}">{{ curso.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Matricular</button>
+    <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancelar</a>
+</form>
+{% endblock %}
